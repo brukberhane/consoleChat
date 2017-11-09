@@ -9,7 +9,7 @@ using namespace std;
 #pragma comment (lib, "Ws2_32.lib")
  
 #define DEFAULT_BUFLEN 512            
-#define IP_ADDRESS "192.168.1.2"
+//#define IP_ADDRESS "192.168.1.2"
 #define DEFAULT_PORT "3504"
  
 struct client_type
@@ -20,7 +20,7 @@ struct client_type
 };
  
 int process_client(client_type &new_client);
-int main();
+int main(int argc, char *argv[], char *envp[]);
  
 int process_client(client_type &new_client)
 {
@@ -48,8 +48,13 @@ int process_client(client_type &new_client)
     return 0;
 }
  
-int main()
+int main(int argc,      // Number of strings in array argv  
+        char *argv[],   // Array of command-line argument strings  
+        char *envp[])
 {
+    char* IP_ADDRESS = argv[1];
+
+
     WSAData wsa_data;
     struct addrinfo *result = NULL, *ptr = NULL, hints;
     string sent_message = "";

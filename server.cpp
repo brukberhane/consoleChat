@@ -7,7 +7,7 @@
  
 #pragma comment (lib, "Ws2_32.lib")
  
-#define IP_ADDRESS "192.168.1.2"
+//#define IP_ADDRESS "192.168.1.2"
 #define DEFAULT_PORT "3504"
 #define DEFAULT_BUFLEN 512
  
@@ -22,7 +22,7 @@ const int MAX_CLIENTS = 5;
  
 //Function Prototypes
 int process_client(client_type &new_client, std::vector<client_type> &client_array, std::thread &thread);
-int main();
+int main(int argc, char *argv[], char *envp[]);
  
 int process_client(client_type &new_client, std::vector<client_type> &client_array, std::thread &thread)
 {
@@ -80,8 +80,10 @@ int process_client(client_type &new_client, std::vector<client_type> &client_arr
     return 0;
 }
  
-int main()
+int main(int argc, char *argv[], char *envp[])
 {
+    char* IP_ADDRESS = argv[1];
+
     WSADATA wsaData;
     struct addrinfo hints;
     struct addrinfo *server = NULL;
