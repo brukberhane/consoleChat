@@ -24,7 +24,7 @@ int main(int argc, char *argv[], char *envp[]);
  
 int process_client(client_type &new_client)
 {
-    while (1)
+    while (true)
     {
         memset(new_client.received_message, 0, DEFAULT_BUFLEN);
  
@@ -48,9 +48,7 @@ int process_client(client_type &new_client)
     return 0;
 }
  
-int main(int argc,      // Number of strings in array argv  
-        char *argv[],   // Array of command-line argument strings  
-        char *envp[])
+int main(int argc, char *argv[], char *envp[])
 {
     char* IP_ADDRESS = argv[1];
 
